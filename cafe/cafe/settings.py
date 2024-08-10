@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_ckeditor_5',
     'core',
-    'menu'
+    'menu',
 ]
 
 MIDDLEWARE = [

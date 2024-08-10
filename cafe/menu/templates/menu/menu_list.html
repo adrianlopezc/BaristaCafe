@@ -2,50 +2,52 @@
 {% block content %}
 {% load static %}
 
-    {% for menu in menus%}
-        <section class="menu-section section-padding" id="section_3">
-            <div class="container">
-                <div class="row">
+<section class="menu-section section-padding" id="section_3">
+    <div class="container">
 
-                    <div class="col-lg-6 col-12 mb-4 mb-lg-0">
-                        <div class="menu-block-wrap">
-                            <div class="text-center mb-4 pb-lg-2">
-                                <em class="text-white">{{menu.title}}</em>
-                                <h4 class="text-white">{{menu.description}}</h4>
+    {% for menu in menus%}
+        <div class="row">
+
+            <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                <div class="menu-block-wrap">
+                    <div class="text-center mb-4 pb-lg-2">
+                        <em class="text-white">{{menu.title}}</em>
+                        <h4 class="text-white">{{menu.description}}</h4>
+                    </div>
+
+                    {% for food in menu.food_set.all %}
+                        <div class="menu-block {% if not forloop.first %}my-4{% endif %}"> {# espaciado excepto la primer línea#}
+                            <div class="d-flex">
+                                <h6>
+                                    {{food.name}} 
+
+                                    {# pone el tag de recomendado sólo cuando corresponde #}
+                                    {% if food.recommended is True %} 
+                                        <span class="badge ms-3">Recommend</span>
+                                    {% endif %}
+                                </h6>
+                            
+                                <span class="underline"></span>
+
+                                {#precio anterior#}
+                                {% if food.previous_cost %}
+                                    <strong class="text-white ms-auto"><del>{{food.previous_cost}}</del></strong>
+                                {% endif %}
+
+                                <strong class="ms-auto">{{food.cost}}</strong>
                             </div>
 
-                            {% for food in menu.food_set.all %}
-                                <div class="menu-block {% if not forloop.first %}my-4{% endif %}"> {# espaciado excepto la primer línea#}
-                                    <div class="d-flex">
-                                        <h6>
-                                            {{food.name}} 
-                                            
-                                            {# pone el tag de recomendado sólo cuando corresponde #}
-                                            {% if food.recommended is True %} 
-                                                <span class="badge ms-3">Recommend</span>
-                                            {% endif %}
-                                        </h6>
-                                    
-                                        <span class="underline"></span>
+                            <div class="border-top mt-2 pt-2">
+                                <small>{{food.description}}</small>
+                            </div>
+                        </div>                            
+                    {% endfor %}
 
-                                        {#precio anterior#}
-                                        {% if food.previous_cost %}
-                                            <strong class="text-white ms-auto"><del>{{food.previous_cost}}</del></strong>
-                                        {% endif %}
-
-                                        <strong class="ms-auto">{{food.cost}}</strong>
-                                    </div>
-
-                                    <div class="border-top mt-2 pt-2">
-                                        <small>{{food.description}}</small>
-                                    </div>
-                                </div>                            
-                            {% endfor %}
-
-                        </div>
-                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+        
     {% endfor %}
+    </div>
+</section>
 {% endblock  %}

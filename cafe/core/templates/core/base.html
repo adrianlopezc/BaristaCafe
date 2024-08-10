@@ -63,8 +63,8 @@ Bootstrap 5 HTML CSS Template
                                     <a class="nav-link click-scroll" href=" {% url 'core:about' %} ">About</a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link click-scroll" href="#section_3">Our Menu</a>
+                                <li class="nav-item" {% if request.path == '/menu/' %}active{% endif %}>
+                                    <a class="nav-link click-scroll" href="{% url 'menu:menu_list' %}">Our Menu</a>
                                 </li>
 
                                 <li class="nav-item">

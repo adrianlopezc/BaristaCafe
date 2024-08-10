@@ -42,7 +42,7 @@ Bootstrap 5 HTML CSS Template
     <body>
                 
             <main>
-                <nav class="navbar navbar-expand-lg">                
+                <nav class="navbar navbar-expand-lg mb-4">                
                     <div class="container">
                         <a class="navbar-brand d-flex align-items-center" href="index.html">
                             <img src=" {% static "core/images/coffee-beans.png" %} " class="navbar-brand-image img-fluid" alt="Barista Cafe Template">
@@ -55,16 +55,16 @@ Bootstrap 5 HTML CSS Template
         
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-lg-auto">
-                                <li class="nav-item" {% if request.path == '/' %}active{% endif %}>
-                                    <a class="nav-link click-scroll" href=" {% url 'core:home' %} ">Home</a>
+                                <li class="nav-item" >
+                                    <a class="nav-link {% if request.path == '/' %}active{% endif %} click-scroll" href=" {% url 'core:home' %} ">Home</a>
                                 </li>
         
-                                <li class="nav-item" {% if request.path == '/about/' %}active{% endif %}>
-                                    <a class="nav-link click-scroll" href=" {% url 'core:about' %} ">About</a>
+                                <li class="nav-item" >
+                                    <a class="nav-link {% if request.path == '/about/' %}active{% endif %} click-scroll" href=" {% url 'core:about' %} ">About</a>
                                 </li>
 
-                                <li class="nav-item" {% if request.path == '/menu/' %}active{% endif %}>
-                                    <a class="nav-link click-scroll" href="{% url 'menu:menu_list' %}">Our Menu</a>
+                                <li class="nav-item" >
+                                    <a class="nav-link {% if request.path == '/menu/' %}active{% endif %} click-scroll" href="{% url 'menu:menu_list' %}">Our Menu</a>
                                 </li>
 
                                 <li class="nav-item">
